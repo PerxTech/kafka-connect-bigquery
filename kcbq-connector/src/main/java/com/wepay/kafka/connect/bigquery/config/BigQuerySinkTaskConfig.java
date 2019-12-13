@@ -95,13 +95,13 @@ public class BigQuerySinkTaskConfig extends BigQuerySinkConfig {
   private static final String BIGQUERY_MESSAGE_TIME_PARTITIONING_DOC =
       "Whether or not to use the message time when inserting records. "
       + "Default uses the connector processing time.";
-  
+
   public static final String BIGQUERY_PARTITION_DECORATOR_CONFIG =
           "bigQueryPartitionDecorator";
   private static final ConfigDef.Type BIGQUERY_PARTITION_DECORATOR_CONFIG_TYPE =
       ConfigDef.Type.BOOLEAN;
   //This has been set to true to preserve the existing behavior. However, we can set it to false if field based partitioning is used in BigQuery
-  public static final Boolean BIGQUERY_PARTITION_DECORATOR_DEFAULT =                 true; 
+  public static final Boolean BIGQUERY_PARTITION_DECORATOR_DEFAULT =                 true;
   private static final ConfigDef.Importance BIGQUERY_PARTITION_DECORATOR_IMPORTANCE =
       ConfigDef.Importance.HIGH;
   private static final String BIGQUERY_PARTITION_DECORATOR_DOC =
@@ -126,6 +126,14 @@ public class BigQuerySinkTaskConfig extends BigQuerySinkConfig {
       ConfigDef.Importance.LOW;
   private static final String BIGQUERY_CLUSTERING_FIELD_NAMES_DOC =
       "List of fields on which data should be clustered by in BigQuery, separated by commas";
+
+  public static final String BIGQUERY_EXPLICIT_PARTITIONING_CONFIG = "bigQueryExplicitPartitioning";
+  private static final ConfigDef.Type BIGQUERY_EXPLICIT_PARTITIONING_CONFIG_TYPE = ConfigDef.Type.BOOLEAN;
+  public static final Boolean BIGQUERY_EXPLICIT_PARTITIONING_DEFAULT =  true;
+  private static final ConfigDef.Importance BIGQUERY_EXPLICIT_PARTITIONING_IMPORTANCE = ConfigDef.Importance.MEDIUM;
+  private static final String BIGQUERY_EXPLICIT_PARTITIONING_DOC =
+          "Whether or not to explicitly specify partition when inserting records. "
+          + "Default specify the partition.";
 
   static {
     config = BigQuerySinkConfig.getConfig()
